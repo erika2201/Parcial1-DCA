@@ -20,8 +20,8 @@ public class Main extends PApplet{
 	
 	@Override
 	public void setup() {
-		//controller= new Controller(this);
 		myFont = createFont("Poppins-Regular.ttf", 18);
+		//controller= new Controller(this);
 	}
 	
 	

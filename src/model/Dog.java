@@ -13,7 +13,7 @@ public class Dog {
 	private String date;
 	
 	
-	public Dog(PApplet app, int id, String nombre, int edad, String raza, Date nacimiento) {
+	public Dog(PApplet app, int id, String name, int age, String breed, Date birth) {
 		this.app=app;
 		this.id=id;
 		this.name=name;
