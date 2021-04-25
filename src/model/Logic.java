@@ -2,6 +2,8 @@ package model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
@@ -23,10 +25,10 @@ public class Logic {
 	private String [] toBirth;
 	private String [] toAge;
 	
-	private NameComparator NameComp;
-	private BreedComparator BreedComp;
-	private BirthComparator BirthComp;
-	private AgeComparator AgeComp;
+	NameComparator NameComp;
+	BreedComparator BreedComp;
+	BirthComparator BirthComp;
+	AgeComparator AgeComp;
 	
 	public Logic(PApplet app){
 		this.app=app;	
@@ -39,23 +41,28 @@ public class Logic {
 		dogList = new LinkedList<Dog>();
 		
 		for (int i = 0; i < infoTXT1.length; i++) {
-			String[] lineString = infoTXT1[i].split(" ");
 			
-			int id = Integer.parseInt(lineString[0]);
-			String name = lineString[1];
+			String[] dogAttributes1 = infoTXT1[i].split(" ");
+			
+			int id = Integer.parseInt(dogAttributes1[0]);
+			String name = dogAttributes1[1];
+			for (int j = 0; j < infoTXT2.length; j++) {	
+				
+				String[] dogAttributes2 = infoTXT2[j].split(" ");
+				if(id == Integer.parseInt(dogAttributes2[0])) {
+				
+					String breed = dogAttributes2[1];
+					String birth = dogAttributes2[2];
+					String[] birthday= birth.split("-");
+					String dogBirthday= birthday[2] +"-"+ birthday[1] +"-"+ birthday[0] ;
+	    LocalDate dogBirth = LocalDate.parse(dogBirthday); //localDate is other (better) way to show date than before c:
+	    LocalDate date = LocalDate.now();
 
-			String[] lineString2 = infoTXT2[i].split(" ");
-			String breed = lineString2[1];
-			int birth = Integer.parseInt(lineString[2]);
-		
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-			Date date = null;
-			
-			try {date = format.parse(lineString2[2]);
-			} catch (ParseException ex) {
-				System.out.println(ex);
-			}					
-			addElementList(new Dog(app, id, name, breed, birth));// the element is added to the list
+	    int age = toCalAge(dogBirth,date); //try to calculate age of dogs, call the method to calculate age
+					dogList.add(new Dog(id, name, age, breed,app));
+				}
+				
+			}
 		}
 		
 		toID = new String[5];
@@ -74,10 +81,13 @@ public class Logic {
 
 	}
 	
-
-	public void addElementList(Dog dog) {
-		dogList.add(dog); //to add the dog
-	}
+	 public  int toCalAge(LocalDate birthDate, LocalDate currentDate) {
+	        if ((birthDate != null) && (currentDate != null)) {
+	            return Period.between(birthDate, currentDate).getYears();
+	        } else {
+	            return 0;
+	        }
+	    }
 	
 	public void sortList(char c) {
 		switch (c) {
