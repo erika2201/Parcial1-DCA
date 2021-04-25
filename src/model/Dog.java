@@ -14,14 +14,14 @@ public class Dog implements Comparable<Dog> {
 		this.breed=breed;
 		this.app=app;
 	}
-	public void drawAttributes(int x, int y) {
-		app.text(this.id, x, y);
+	public void drawInfo(int x, int y) {
+		app.text(this.id, x, y+20);
 	
-		app.text(this.name, x, y);
+		app.text(this.name, x, y+40);
 
-		app.text(this.age + " años", x, y);
+		app.text(this.age + " años", x, y+60);
 
-		app.text(this.breed, x, y);
+		app.text(this.breed, x, y+80);
 	}
 	public String getName() {
 		return name;

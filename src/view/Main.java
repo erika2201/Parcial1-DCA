@@ -31,7 +31,7 @@ public class Main extends PApplet{
 		drawInstructions();
 		
 		for (int i = 0; i < controller.getDogList().size(); i++) {
-			controller.getDogList().get(i).drawInfo(10+(140*i));
+			controller.getDogList().get(i).drawInfo(150+(185*i),300);
 		}
 	}
 

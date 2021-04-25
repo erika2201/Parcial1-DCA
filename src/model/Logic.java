@@ -92,14 +92,23 @@ public class Logic {
 	public void sortList(char c) {
 		switch (c) {
 		case 'i':
-			
+			Collections.sort(dogList);
+			for (int i = 0; i < dogList.size(); i++) {
+				String id = Integer.toString(dogList.get(i).getId());
+				String name = dogList.get(i).getName().toLowerCase();
+				String age = Integer.toString(dogList.get(i).getAge());
+				String breed = dogList.get(i).getBreed().toLowerCase();
+				String fil = id + "," + name + "," + age + "," + breed;
+				toID[i]=fil;
+				app.saveStrings("texts/byID.txt", toID);
+			}
 			break;
 		
 		case 'n':
 		
 			Collections.sort(dogList, NameComp);
 		
-			for (int i = 0; i < dogList.size(); i++) {
+			/*for (int i = 0; i < dogList.size(); i++) {
 
 				String ID = Integer.toString(dogList.get(i).getId());
 				String age = Integer.toString(dogList.get(i).getAge());
@@ -113,13 +122,13 @@ public class Logic {
 				String line = ID + " " + name + " " + breed + " " + age + " " + birth;
 				toName[i] = line;
 			}
-			this.app.saveStrings("toName.txt", toName);
+			this.app.saveStrings("toName.txt", toName);*/
 			break;
 		
 		case 'e':
 			Collections.sort(dogList, AgeComp);
 	
-			for (int i = 0; i < dogList.size(); i++) {
+			/*for (int i = 0; i < dogList.size(); i++) {
 
 				String ID = Integer.toString(dogList.get(i).getId());
 				String age = Integer.toString(dogList.get(i).getAge());
@@ -134,7 +143,7 @@ public class Logic {
 				toAge[i] = line;
 			}
 			this.app.saveStrings("byAge.txt", toAge);
-			break;
+			break;*/
 		
 		case 'r':
 			
