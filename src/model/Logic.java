@@ -2,6 +2,7 @@ package model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -67,7 +68,7 @@ public class Logic {
 	public void sortList() {
 		switch (app.key) {
 		case 'i':
-	
+			
 			break;
 		
 		case 'n':
