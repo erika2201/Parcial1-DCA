@@ -16,8 +16,8 @@ public class Controller {
 		logic= new Logic(app);
 	}
 	
-	public void sortList() {
-		logic.sortList();
+	public void sortList(char c) {
+		logic.sortList(c);
 	}
 	
 	public LinkedList<Dog> getDogList() {

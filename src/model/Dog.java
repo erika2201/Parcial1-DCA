@@ -12,7 +12,7 @@ public class Dog {
 	private Date birth; // I´m not sure with this
 	private String date;
 
-	public Dog(PApplet app, int id, String name, int age, String breed, Date birth) {
+	public Dog(PApplet app, int id, String name, String breed, int age) {
 		this.app = app;
 		this.id = id;
 		this.name = name;
@@ -21,13 +21,12 @@ public class Dog {
 		this.birth = birth;
 	}
 
-	public void drawInfo(int x, int y) {
+	public void drawInfo(int x) {
 
-		app.text("ID:" + id, x, y);
-		app.text("Nombre:" + name, x, y + 20);
-		app.text("Edad:" + age, x, y + 40);
-		app.text("Raza:" + breed, x, y + 60);
-		app.text("Fecha de Nacimiento:" + date, x, y + 80); // Line 25
+		app.text("ID:" + id, x, 100);
+		app.text("Nombre:" + name, x, 120);
+		app.text("Edad:" + age, x, 142);
+		app.text("Raza:" + breed, x, 162);
 
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		String date = format.format(this.birth);
@@ -40,7 +39,7 @@ public class Dog {
 	}
 
 	//Getters
-	private int getId() {
+	public int getId() {
 		return id;
 	}
 
