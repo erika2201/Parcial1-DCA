@@ -98,31 +98,25 @@ public class Logic {
 				String name = dogList.get(i).getName().toLowerCase();
 				String age = Integer.toString(dogList.get(i).getAge());
 				String breed = dogList.get(i).getBreed().toLowerCase();
-				String fil = id + "," + name + "," + age + "," + breed;
+				String fil = id + " " + name + " " + age + " " + breed;
 				toID[i]=fil;
-				app.saveStrings("texts/byID.txt", toID);
+				app.saveStrings("data/toID.txt", toID);
 			}
 			break;
 		
 		case 'n':
-		
 			Collections.sort(dogList, NameComp);
-		
-			/*for (int i = 0; i < dogList.size(); i++) {
+			for (int i = 0; i < dogList.size(); i++) {
 
-				String ID = Integer.toString(dogList.get(i).getId());
+				String id = Integer.toString(dogList.get(i).getId());
+				String name = dogList.get(i).getName().toLowerCase();
 				String age = Integer.toString(dogList.get(i).getAge());
-				String name = dogList.get(i).getName();
-				name = name.toLowerCase();
-				String breed = dogList.get(i).getBreed();
-				breed= breed.toLowerCase();
-				SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-				String birth = format.format (dogList.get(i).getDate());
-
-				String line = ID + " " + name + " " + breed + " " + age + " " + birth;
-				toName[i] = line;
+				String breed = dogList.get(i).getBreed().toLowerCase();
+				String fil = id + " " + name + " " + age + " " + breed;
+				toName[i]=fil;
+				app.saveStrings("data/toName.txt", toName); //does not work: c
 			}
-			this.app.saveStrings("toName.txt", toName);*/
+	
 			break;
 		
 		case 'e':
